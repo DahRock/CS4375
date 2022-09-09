@@ -3,7 +3,7 @@
 ---
 [Overview of ML](Overview_of_ML.pdf).
 ---
-# Data Exploration Assignment
-[Overview doc] (Data_Exploration_Document.pdf).
-[CPP Code] (dataexporation.cpp).
-[Data file] (Boston.csv).
+## Data Exploration Assignment
+[Overview doc](Data_Exploration_Document.pdf).
+[CPP Code](dataexporation.cpp).
+[Data file](Boston.csv).
