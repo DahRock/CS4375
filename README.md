@@ -5,5 +5,5 @@
 ---
 ## Data Exploration Assignment
 [Overview doc](Data_Exploration_Document.pdf).
-[CPP Code](dataexporation.cpp).
+[CPP Code](dataexploration.cpp).
 [Data file](Boston.csv).
