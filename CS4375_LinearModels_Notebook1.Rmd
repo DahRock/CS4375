@@ -1,0 +1,130 @@
+---
+title: "Regression"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+#### Derrick Martin
+#### 09/25/2022
+
+# Linear Regression Overview
+
+---
+
+Linear regression works by plotting the data and attempting to find a correlation for which the data best fits. The algorithm attempts to predict a target using a number of predictors, often the slope of the line represents the relational change between the variables. Linear Regression is used because it is simple and quite easy to do but it often over fits the data and has a hard time ignoring noise.
+
+
+# Choosing test and training data
+
+---
+
+This code block chooses 80 percent of the data from the file at random and assigns it to be the training data, and takes the remaining 20 percent of the data and assigns it to be the testing data. The data is on used audi cars and is sourced from Kaggle.
+```{r}
+library(readr)
+df <- read_csv("audi.csv", show_col_types = FALSE)
+
+set.seed(1)
+
+sample <- sample(c(TRUE,FALSE), nrow(df), replace = TRUE, prob = c(0.80,0.20))
+
+train <- df[sample, ]
+test  <- df[!sample, ]
+```
+
+# Data Exploration
+
+---
+
+This code is showing different information about the data so that we can get a better idea of the values and counts of different items.
+```{r}
+names(train)
+dim(train)
+summary(train)
+str(train)
+head(train)
+tail(train)
+```
+
+# Graphs
+
+---
+
+```{r}
+plot(x = train$mileage, y = train$price, xlim = c(0, 150000))
+hist(train$price)
+```
+
+# Linear Model
+
+---
+
+The Residuals in the linear model is the difference between the predicted value of y and the actual value of y. In this case the y value is the mileage, so a median difference of 1949 is actually not that bad considering the mileages are often in the hundreds of thousands. The three stars next to the mileage value indicates that it is a good predictor, however the relatively low R squared value indicates a low correlation.
+```{r}
+model1 <- lm(formula = price ~ mileage, data=train)
+summary(model1)
+```
+
+# Residual Plots
+
+---
+
+The first plot is meant to show if the model follows a non linear pattern. It seems to be clumped up at the end and have a somewhat curve so it could possibly not be a linear model. The second plot is meant to show if the residuals are normally distributed. In the plot it seems to follow a straight line for a while and then curve up heavily, which is concerning. The third plot is meant to check for equal variance, which it seems to match quite well. The last plot shows that there are some data points that influence the results, and would be changed if removed. 
+```{r}
+plot(model1)
+```
+
+# Multiple Linear Model and Residual plots
+
+---
+
+```{r}
+model2 <- lm(price ~ poly(mileage, year), data=train)
+summary(model2)
+plot(model2)
+```
+
+# Third Model and Residual plots
+
+---
+
+```{r}
+model3 <- lm(price ~ poly(mileage, year, mpg, engineSize),data=train)
+summary(model3)
+plot(model3)
+```
+
+---
+
+As we added more variables into the regression, the R squared value increased. This is an indicator that the price can be more accurately predicted by multiple of the variables. I think this is more accurate to what should be expected, as when someone is trying to buy a car they often take all of the factors into consideration.
+
+---
+
+# Test data using models
+
+---
+
+```{r}
+pred1 <- predict(model1, newdata=test)
+correlation1 <- cor(pred1, test$price)
+model_summ1 <- summary(model1)
+mse1 <- mean((pred1 - test$price)^2)
+print(correlation1)
+print(mse1)
+
+pred2 <- predict(model2, newdata=test)
+correlation2 <- cor(pred2, test$price)
+mse2 <- mean((pred2 - test$price)^2)
+print(correlation2)
+print(mse2)
+
+pred3 <- predict(model3, newdata=test)
+correlation3 <- cor(pred3, test$price)
+mse3 <- mean((pred3 - test$price)^2)
+print(correlation3)
+print(mse3)
+```
+
+---
+
+These results show a relatively low correlation that gets better as we move through the models and include more variables. Although the MSE is very high in each of the cases the correlation gets better at the end with a value of 0.88 roughly and the MSE decreases each time. This is further proof of what the training data results indicated that the price can be better predicted using multiple other variables.

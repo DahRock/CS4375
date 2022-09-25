@@ -1,0 +1,108 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+#### Derrick Martin
+#### 09/25/2020
+
+---
+
+Logistic Regression is a linear method of classification where data is separated using a sigmoid function and all of the values are represented in the [0,1] range. The algorithm calculated the log odds from the estimated parameters and creates a boundary between classes using the variables provided. Logistic regression is good for classifying data that are linearly separable without using a lot of computational power, however it is prone to underfitting and does not work on non-linear decision boundaries.
+
+
+# Dividing the data into train and test
+
+---
+
+```{r}
+library(readr)
+df <- read_csv("heart_disease_data.csv", show_col_types = FALSE)
+
+set.seed(1)
+
+sample <- sample(c(TRUE,FALSE), nrow(df), replace = TRUE, prob = c(0.80,0.20))
+
+train <- df[sample, ]
+test  <- df[!sample, ]
+```
+
+# Data Exploration
+
+---
+
+This code is showing different information about the data so that we can get a better idea of the values and counts of different items.
+```{r}
+names(train)
+dim(train)
+summary(train)
+str(train)
+head(train)
+tail(train)
+```
+
+# Graphs
+
+---
+
+In this data set the Age is broken into age categories numbered 1-14. The age categories are as follows.
+
+1. Age 18 to 24
+2. Age 25 to 29
+3. Age 30 to 34
+4. Age 35 to 39
+5. Age 40 to 44
+6. Age 45 to 49
+7. Age 50 to 54
+8. Age 55 to 59
+9. Age 60 to 64
+10. Age 65 to 69
+11. Age 70 to 74
+12. Age 75 to 79
+13. Age 80 or older
+```{r}
+d <- density(train$BMI)
+plot(d)
+hist(train$Age)
+```
+
+# Building Simple Linear Regression model
+
+---
+
+In the summary we can see that the Residual deviance is somewhat similar to the null deviance which is not good as we want the RD to be smaller as that would indicate a better fit for the model. The high AIC also indicates that there is not a preference for simpler models with less predictors.
+```{r}
+model1 <- glm(HeartDiseaseorAttack~ BMI + Age, data = train, family = binomial)
+summary(model1)
+```
+
+# Naive Bayes model
+
+---
+
+Here we can see that the NB predicts that based on all of the factors HeartDiseaseorAttack can be shown not to be present with around 90 percent accuracy. There is then a breakdown of all of the factors and how they individually can or can not predict HeartDiseaseorAttack or the lack thereof.
+```{r}
+library(e1071)
+nb1 <- naiveBayes(HeartDiseaseorAttack~., data = train)
+nb1
+```
+
+# Predictions
+
+---
+
+According to these results the NB model predicts with roughly an 80 percent accuracy while the LR model has 23 percent correlation on the predictions. The NB predicted much more accurately I think because it takes all of the variables into account while the LR model only attempts to predict based on two variables.
+```{r}
+pred1 <- predict(model1, newdata = test)
+pred2 <- predict(nb1, newdata = test, type = "class")
+mean(pred2==test$HeartDiseaseorAttack)
+cor(pred1,test$HeartDiseaseorAttack)
+```
+
+# Strengths and weaknesses
+
+---
+
+Niave Bayes is better at evaluating smaller data sets and is pretty easy to implement and interpret but can be outperformed by other classifiers on larger data sets and the niave assumption that the predictors are independent may be wrong. Logistic Regression is good for classifying data that are linearly separable without using a lot of computational power, however it is prone to underfitting and does not work on non-linear decision boundaries.
