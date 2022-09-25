@@ -14,5 +14,6 @@
 
 ## Linear Models Assignment
 [Linear regression](CS4375_LinearModels2)
+
 [Linear classification with LR and NB](CS4375_LinearModels1)
 
