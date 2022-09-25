@@ -17,7 +17,7 @@
 
 [Linear classification with LR and NB](CS4375_LinearModels1.pdf)
 
-[Code for linear regression](CS4375_LinearModels_Notebook1.rmd)
+[Code for linear regression](CS4375_LinearModels_Notebook1.Rmd)
 
-[Code for linear classification](CS4375_LinearModels_Notebook2.rmd)
+[Code for linear classification](CS4375_LinearModels_Notebook2.Rmd)
 
