@@ -1,6 +1,8 @@
 # CS4375
 > This is the repository where I will include assignments throughout the semester.
+
 ---
+
 [Overview of ML](Overview_of_ML.pdf)
 
 ---
@@ -24,9 +26,9 @@
 ---
 
 ## ML from scratch
-[Overview Document] (Logistic_Regression_and_Naive_Bayes.pdf)
+[Overview Document](Logistic_Regression_and_Naive_Bayes.pdf)
 
-[Logistic Regression] (LogisticRegression.cpp)
+[Logistic Regression](LogisticRegression.cpp)
 
-[NaiveBayes] (NaiveBayes.cpp)
+[NaiveBayes](NaiveBayes.cpp)
 
