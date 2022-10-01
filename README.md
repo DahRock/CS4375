@@ -28,5 +28,5 @@
 
 [Logistic Regression] (LogisticRegression.cpp)
 
-[NaiveBayes] (NaiveBayes.cpp.cpp)
+[NaiveBayes] (NaiveBayes.cpp)
 
