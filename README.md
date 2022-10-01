@@ -25,6 +25,8 @@
 
 ## ML from scratch
 [Overview Document] (Logistic_Regression_and_Naive_Bayes.pdf)
+
 [Logistic Regression] (LogisticRegression.cpp)
+
 [NaiveBayes] (NaiveBayes.cpp)
 
