@@ -21,3 +21,10 @@
 
 [Code for linear classification](CS4375_LinearModels_Notebook2.Rmd)
 
+---
+
+## ML from scratch
+[Overview Document].(Logistic_Regression_and_Naive_Bayes.pdf)
+[Logistic Regression].(LogisticRegression.cpp)
+[NaiveBayes].(NaiveBayes.cpp)
+
