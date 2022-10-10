@@ -32,3 +32,16 @@
 
 [NaiveBayes](NaiveBayes.cpp)
 
+---
+
+## Searching for Similarity
+
+[Narrative](Searching_For_Similarity.docx)
+
+[Regression](RegressionNotebook.pdf)
+
+[Classification](ClassificationNotebook.pdf)
+
+[Clustering](clustering.pdf)
+
+[Dimentionality Reduction](PCA_LDA.pdf)
