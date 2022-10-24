@@ -45,3 +45,15 @@
 [Clustering](clustering.pdf)
 
 [Dimentionality Reduction](PCA_LDA.pdf)
+
+---
+
+## Kernel and Ensemble Methods
+
+[Narrative]()
+
+[Regression](SVM_Regression.pdf)
+
+[Classification](SVM_Class.pdf)
+
+[Ensemble](SVM-Ensemble.pdf)
