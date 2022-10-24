@@ -50,7 +50,7 @@
 
 ## Kernel and Ensemble Methods
 
-[Narrative]()
+[Narrative](SVM_Kernels_and_Ensemble_Methods.docx)
 
 [Regression](SVM_Regression.pdf)
 
