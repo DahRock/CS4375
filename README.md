@@ -57,3 +57,8 @@
 [Classification](SVM_Class.pdf)
 
 [Ensemble](SVM-Ensemble.pdf)
+
+---
+
+## sklearn
+[pdf](SKLearn.pdf)
